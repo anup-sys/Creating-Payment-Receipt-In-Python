@@ -1,0 +1,29 @@
+import datetime
+def generate_receipt():
+    customer_name = input("Enter the customer's name: ")
+    payment_method = input("Enter the payment method (e.g., Credit Card, Cash, etc.): ")
+    number_of_items = int(input("Enter the number of items purchased: "))
+    items = []
+    total_amount = 0
+    for i in range(number_of_items):
+        item_name = input(f"Enter name of item {i + 1}: ")
+        item_price = float(input(f"Enter price of {item_name}: "))
+        quantity = int(input(f"Enter quantity of {item_name}: "))
+        total_amount += item_price * quantity
+        items.append((item_name, item_price, quantity, item_price * quantity))
+    payment_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print("\n" + "-" * 40)
+    print(f"{'Receipt':^40}")
+    print("-" * 40)
+    print(f"Customer: {customer_name}")
+    print(f"Payment Method: {payment_method}")
+    print(f"Date: {payment_date}")
+    print("\nItems Purchased:")
+    for item in items:
+        print(f"{item[0]:<20} {item[1]:>10.2f} x {item[2]:>2} = {item[3]:>10.2f}")
+    print("-" * 40)
+    print(f"{'Total Amount:':<30} {total_amount:>10.2f}")
+    print("-" * 40)
+    print("Thank you for your purchase!")
+    print("-" * 40)
+generate_receipt()
